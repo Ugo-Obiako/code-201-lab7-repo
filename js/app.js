@@ -23,14 +23,14 @@ const tokyo = {
 }
 
 // initialize sales
-seattle.estimate();
-tokyo.estimate();
+/*seattle.estimate();
+tokyo.estimate(); */
 
 function estimateSales(store) {
-  const sales = [];
+  let sales = [];
   for (let i = 0; i < hours.length; i++) {
-    const numCustomers = randomInRange(store.minCustomers, store.maxCustomers);
-    const hourSales = Math.ceil(numCustomers * store.avgCookiesPerSale);
+    let numCustomers = randomInRange(store.minCustomers, store.maxCustomers);
+    let hourSales = Math.ceil(numCustomers * store.avgCookiesPerSale);
     sales.push(hourSales);
   }
   return sales;
@@ -59,18 +59,18 @@ function render(store) {
   for (let i = 0; i < store.sales.length; i++) {
     const salesItem = document.createElement('li');
     hoursList.appendChild(salesItem);
-    const cookiesSoldThisHour = store.sales[i];
+    let cookiesSoldThisHour = store.sales[i];
     totalSold += cookiesSoldThisHour;
-    const salesInfo = `${hours[i]}: ${cookiesSoldThisHour} cookies`;
+    let salesInfo = `${hours[i]}: ${cookiesSoldThisHour} cookies`;
     salesItem.textContent = salesInfo;
   }
 
   // add total line
   const totalItem = document.createElement('li');
   hoursList.appendChild(totalItem);
-  const totalInfo = `Total: ${totalSold} cookies sold`;
+  let totalInfo = `Total: ${totalSold} cookies sold`;
   totalItem.textContent = totalInfo;
-
+  return totalInfo;
 }
 
 render(seattle);
