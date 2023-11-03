@@ -2,13 +2,10 @@
 
 I am Ugo Obiako.
 
-This is the repo for the salmon-cookies lab assignment in Code 201. 
-
-I am still working on this lab assignment. 
 
 # code-201-salmon-cookies-repo
 
-This is the repo for the cookie-stand lab assignment. 
+This is the repo for the cookie-stand lab assignment in Code 201. 
 
 ## Lab: Salmon Cookies
 
