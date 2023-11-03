@@ -1,11 +1,13 @@
 # code-201-salmon-cookies-repo
 
 I am Ugo Obiako.
+
 This is the repo for the cookie-stand lab assignment in Code 201. 
 
 ## Lab: Salmon Cookies
 
 Read this lab assignment in its entirety before beginning your lab. You may want to open it in a new tab.
+
 Problem Domain
 
 Your friend Pat has come up with a business idea by combining his love for sweets and his passion for healthy ecosystems. Pat has developed a recipe for a coffee-time confection called Salmon Cookies. These cookies made into the shape of a salmon and are suitable for both humans and salmon to enjoy.
