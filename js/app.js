@@ -119,6 +119,7 @@ function render(seattle) {
 }
 
 render(seattle);
+render(tokyo);
 
 
 
