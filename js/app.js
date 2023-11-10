@@ -23,10 +23,12 @@ const tokyo = {
 }
 
 // initialize sales
-/*seattle.estimate();
-tokyo.estimate(); */
+seattle.estimate();
+tokyo.estimate(); 
 
-/*function estimateSales(store) {
+
+// Estimate sales
+function estimateSales(store) {
   let sales = [];
   for (let i = 0; i < hours.length; i++) {
     let numCustomers = randomInRange(store.minCustomers, store.maxCustomers);
@@ -35,10 +37,14 @@ tokyo.estimate(); */
   }
   return sales;
   }
+
+
 function randomInRange(min, max) {
   return Math.floor(Math.random() * (max - min + 1) + min);
-}  */
+} 
 
+
+// Estimate Seattle sales
 function estimateSales(seattle) {
   let sales = [];
   for (let i = 0; i < hours.length; i++) {
@@ -48,14 +54,27 @@ function estimateSales(seattle) {
   }
   return sales;
 }
-function randomInRange(min, max) {
-  return Math.floor(Math.random() * (max - min + 1) + min);
+
+
+// Estimate Tokyo sales
+function estimateSales(tokyo) {
+  let sales = [];
+  for (let i = 0; i < hours.length; i++) {
+    let numCustomers = randomInRange(tokyo.minCustomers, tokyo.maxCustomers);
+    let hourSales = Math.ceil(numCustomers * tokyo.avgCookiesPerSale);
+    sales.push(hourSales);
+  }
+  return sales;
 }
+
+
 
 const container = document.getElementById('root');
 
 
-/*function render(store) {
+
+// Here is the render function: Used to render sales info and total Info for different stores
+function render(store) {
   // need an article per cookie stand
   const cookieStandArticle = document.createElement('article');
   container.appendChild(cookieStandArticle);
@@ -83,40 +102,8 @@ const container = document.getElementById('root');
   hoursList.appendChild(totalItem);
   let totalInfo = `Total: ${totalSold} cookies sold`;
   totalItem.textContent = totalInfo;
-} */
-
-//render(seattle);
-//render(tokyo);
-
-function render(seattle) {
-  // need an article per cookie stand
-  const cookieStandArticle = document.createElement('article');
-  container.appendChild(cookieStandArticle);
-
-  const heading = document.createElement('h2');
-  cookieStandArticle.appendChild(heading);
-  heading.textContent = seattle.location;
-
-  const hoursList = document.createElement('ul');
-  cookieStandArticle.appendChild(hoursList);
-
-  let totalSold = 0;
-
-  for (let i = 0; i < seattle.sales.length; i++) {
-    const salesItem = document.createElement('li');
-    hoursList.appendChild(salesItem);
-    let cookiesSoldThisHour = seattle.sales[i];
-    totalSold += cookiesSoldThisHour;
-    let salesInfo = `${hours[i]}: ${cookiesSoldThisHour} cookies`;
-    salesItem.textContent = salesInfo;
-  }
-
-  // add total line
-  const totalItem = document.createElement('li');
-  hoursList.appendChild(totalItem);
-  let totalInfo = `Total: ${totalSold} cookies sold`;
-  totalItem.textContent = totalInfo;
 }
+
 
 render(seattle);
 render(tokyo);
