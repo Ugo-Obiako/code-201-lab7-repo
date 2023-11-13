@@ -1,6 +1,18 @@
 const hours = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm'];
 
-const seattle = {
+//Constructor function
+function Store(location, minCustomers, maxCustomers, avgCookiesPerSale, sales){
+  this.location = location;
+  this.minCustomers = minCustomers;
+  this.maxCustomers = maxCustomers;
+  this.avgCookiesPerSale = avgCookiesPerSale;
+  this.sales = estimateSales(this);
+  };
+
+
+
+
+/* const seattle = {
   location: 'Seattle',
   minCustomers: 23,
   maxCustomers: 65,
@@ -24,7 +36,7 @@ const tokyo = {
 
 // initialize sales
 seattle.estimate();
-tokyo.estimate(); 
+tokyo.estimate();   */ 
 
 
 // Estimate sales
@@ -69,7 +81,16 @@ function estimateSales(tokyo) {
 
 
 
-const container = document.getElementById('root');
+const seattle = new Store ("Seattle", 23, 65, 6.3, "");
+const tokyo = new Store ("Tokyo", 3, 18, 2.3, "");
+const dubai = new Store("Dubai", 19, 30, 4.2, "");
+const paris = new Store ("Paris", 21, 50, 5.3, "");
+const lima = new Store("Lima", 2, 15, 2.1, "");
+
+
+
+
+/*const container = document.getElementById('root');
 
 
 
@@ -102,11 +123,56 @@ function render(store) {
   hoursList.appendChild(totalItem);
   let totalInfo = `Total: ${totalSold} cookies sold`;
   totalItem.textContent = totalInfo;
+}  */
+
+
+
+
+const container = document.getElementById('tableContainer');
+
+
+
+// Here is the render function: Used to render sales info and total Info for different stores
+function render(store) {
+  // need an article per cookie stand
+  const tableElem = document.createElement('table');
+  container.appendChild(tableElem);
+
+
+
+  const row = document.createElement('tr');
+  tableElem.appendChild(row);
+  //heading.textContent = store.location;
+
+
+  const hoursList = document.createElement('th');
+  row.appendChild(hoursList);
+
+  let totalSold = 0;
+
+  for (let i = 0; i < store.sales.length; i++) {
+    const salesItem = document.createElement('td');
+    hoursList.appendChild(salesItem);
+    let cookiesSoldThisHour = store.sales[i];
+    totalSold += cookiesSoldThisHour;
+    let salesInfo = `${hours[i]}: ${cookiesSoldThisHour} cookies sold in ${store.location}`;
+    (hoursList);
+    salesItem.textContent = salesInfo;
+  }
+
+  // add total line
+  const totalItem = document.createElement('td');
+  hoursList.appendChild(totalItem);
+  let totalInfo = `Total: ${totalSold} cookies sold in ${store.location}`;
+  totalItem.textContent = totalInfo;
 }
 
 
 render(seattle);
 render(tokyo);
+render(dubai);
+render(paris);
+render(lima);
 
 
 
