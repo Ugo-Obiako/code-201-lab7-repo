@@ -12,32 +12,6 @@ function Store(location, minCustomers, maxCustomers, avgCookiesPerSale, sales){
 
 
 
-/* const seattle = {
-  location: 'Seattle',
-  minCustomers: 23,
-  maxCustomers: 65,
-  avgCookiesPerSale: 6.3,
-  sales: [],
-  estimate: function () {
-    this.sales = estimateSales(this);
-  },
-}
-
-const tokyo = {
-  location: 'Tokyo',
-  minCustomers: 3,
-  maxCustomers: 18,
-  avgCookiesPerSale: 2.3,
-  sales: [],
-  estimate: function () {
-    this.sales = estimateSales(this);
-  },
-}
-
-// initialize sales
-seattle.estimate();
-tokyo.estimate();   */ 
-
 
 // Estimate sales
 function estimateSales(store) {
@@ -89,41 +63,6 @@ const lima = new Store("Lima", 2, 15, 2.1, "");
 
 
 
-
-/*const container = document.getElementById('root');
-
-
-
-// Here is the render function: Used to render sales info and total Info for different stores
-function render(store) {
-  // need an article per cookie stand
-  const cookieStandArticle = document.createElement('article');
-  container.appendChild(cookieStandArticle);
-
-  const heading = document.createElement('h2');
-  cookieStandArticle.appendChild(heading);
-  heading.textContent = store.location;
-
-  const hoursList = document.createElement('ul');
-  cookieStandArticle.appendChild(hoursList);
-
-  let totalSold = 0;
-
-  for (let i = 0; i < store.sales.length; i++) {
-    const salesItem = document.createElement('li');
-    hoursList.appendChild(salesItem);
-    let cookiesSoldThisHour = store.sales[i];
-    totalSold += cookiesSoldThisHour;
-    let salesInfo = `${hours[i]}: ${cookiesSoldThisHour} cookies`;
-    salesItem.textContent = salesInfo;
-  }
-
-  // add total line
-  const totalItem = document.createElement('li');
-  hoursList.appendChild(totalItem);
-  let totalInfo = `Total: ${totalSold} cookies sold`;
-  totalItem.textContent = totalInfo;
-}  */
 
 
 
