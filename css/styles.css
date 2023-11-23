@@ -1,5 +1,5 @@
 * {
-    font-family: 'Helvetica', sans-serif;
+    font-family: "Helvetica", sans-serif;
   }
   
   header {
@@ -74,8 +74,20 @@
     list-style-type: none;
   }
 
-  table, td {
+  table, td,tr,th {
     border: 0.5px solid;
     border-collapse: collapse;
-    font-weight: 100;
-  } 
+    /*font-weight: 100; */
+    padding: .5rem;
+  }
+  
+  /*table, tr, td, th {
+    border-collapse: collapse;
+    border: 1px solid;
+    padding: .5rem;
+  } */
+  
+  .text-left {
+    text-align: left;
+  }
+  

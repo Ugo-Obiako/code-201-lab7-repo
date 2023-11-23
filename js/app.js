@@ -1,5 +1,9 @@
 const hours = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm'];
 
+
+const stores = [];
+
+
 //Constructor function
 function Store(location, minCustomers, maxCustomers, avgCookiesPerSale, sales){
   this.location = location;
@@ -10,6 +14,7 @@ function Store(location, minCustomers, maxCustomers, avgCookiesPerSale, sales){
   };
 
 
+const newStore = new Store(location, this.minCustomers, this.maxCustomers, this.avgCookiesPerSale, "");
 
 
 
@@ -112,6 +117,7 @@ render(tokyo);
 render(dubai);
 render(paris);
 render(lima);
+render(newStore);
 
 ///////////////////////////////////
 ///////////////////////////////////
@@ -134,23 +140,126 @@ Store.prototype.render = function() {
   row.appendChild(tdMinCustomers);
   tdMinCustomers.textContent = this.minCustomers;
 
-  const tdInterests = document.createElement('td');
-  row.appendChild(tdInterests);
-  tdInterests.textContent = this.interests.join();
+  const tdMaxCustomers = document.createElement('td');
+  row.appendChild(tdMaxCustomers);
+  tdMaxCustomers.textContent = this.maxCustomers;
 
-  const tdKids = document.createElement('td');
-  row.appendChild(tdKids);
-  tdKids.textContent = this.isGoodWithKids;
-
-  const tdDogs = document.createElement('td');
-  row.appendChild(tdDogs);
-  tdDogs.textContent = this.isGoodWithDogs;
-
-  const tdCats = document.createElement('td');
-  row.appendChild(tdCats);
-  tdCats.textContent = this.isGoodWithOtherCats;
+  const tdAvgCookiesPerSale = document.createElement('td');
+  row.appendChild(tdAvgCookiesPerSale);
+  tdAvgCookiesPerSale.textContent = this.avgCookiesPerSale;
 }
 
+
+
+// Form starts here
+const storeForm = document.getElementById('addStoreForm');
+
+// event listeners need to know: what event do they care about, and what do they want to do when it happens.
+storeForm.addEventListener('submit',
+  function (event) {
+    event.preventDefault();
+    const location = event.target.location.value;
+    const minCustomers = event.target.minCustomers.value;
+    const maxCustomers = event.target.maxCustomers.value;
+    const avgCookiesPerSale = event.target.avgCookiesPerSale.value;
+
+    const newStore = new Store(location, minCustomers, maxCustomers, avgCookiesPerSale, "");
+    estimateSales(newStore);
+    storeForm.reset();
+    newStore.render();
+    stores.push(newStore);
+    renderTableFooter();
+  }
+);
+
+///////////////////////////
+// Helper Functions
+///////////////////////////
+
+/*function randomInRange (min, max) {
+  return Math.floor(Math.random() * (max - min + 1) + min);
+} */
+
+function renderTable() {
+  const parentElement = document.getElementById('storeProfiles');
+  table = document.createElement('table');
+  parentElement.appendChild(table);
+
+  renderTableHeader();
+
+  dataRowParent = document.createElement('tbody');
+  table.appendChild(dataRowParent);
+
+  renderTableFooter()
+}
+
+function renderTableHeader() {
+
+  const thead = document.createElement('thead');
+  table.appendChild(thead);
+
+  const row = document.createElement('tr');
+  thead.appendChild(row);
+
+  const thLocation = document.createElement('th');
+  row.appendChild(thLocation);
+  thLocation.textContent = 'Location';
+
+  const thMinCustomers = document.createElement('th');
+  row.appendChild(thMinCustomers);
+  thMinCustomers.textContent = 'MinCustomers';
+
+  const thMaxCustomers = document.createElement('th');
+  row.appendChild(thMaxCustomers);
+  thMaxCustomers.textContent = 'MaxCustomers';
+
+  const thAvgCookiesPerSale = document.createElement('th');
+  row.appendChild(thAvgCookiesPerSale);
+  thAvgCookiesPerSale.textContent = 'AvgCookiesPerSale';
+}
+
+function renderTableFooter() {
+  // The footer row needs to be emptied out if it has already rendered,
+  // since the footer renders repeatedly.
+
+  let tfoot = document.querySelector('tfoot');
+
+  if(tfoot) {
+    tfoot.innerHTML = ""; // removes all children of existing tfoot
+  } else {
+    tfoot = document.createElement('tfoot');
+    table.appendChild(tfoot);
+  }
+
+  const row = document.createElement('tr');
+  tfoot.appendChild(row);
+
+  const storeCountCell = document.createElement('th');
+  row.appendChild(storeCountCell);
+  storeCountCell.textContent = "store Count: " + stores.length;
+  storeCountCell.setAttribute('colspan',4);
+  storeCountCell.classList = ['text-left'];
+
+  /*let ageSum = 0;
+  for(let i=0; i<kittens.length; i++) {
+    const currentKitten = kittens[i];
+    ageSum += currentKitten.age;
+  }
+
+
+  const averageAge = ageSum / kittens.length || 0;
+  const averageAgeCell = document.createElement('th');
+  row.appendChild(averageAgeCell);
+  averageAgeCell.textContent = 'Average age: ' + averageAge;
+  averageAgeCell.setAttribute('colspan', 3);
+  averageAgeCell.classList = ['text-left'];   */
+}
+
+///////////////////////////
+// start app
+///////////////////////////
+
+renderTable();
 
 
 
