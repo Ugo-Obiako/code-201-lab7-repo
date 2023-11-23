@@ -113,6 +113,43 @@ render(dubai);
 render(paris);
 render(lima);
 
+///////////////////////////////////
+///////////////////////////////////
+// render an instance of the Store using the form and event listener
+//////////////////////////////////
+
+// defined later
+let dataRowParent = null;
+let table = null;
+
+Store.prototype.render = function() {
+  const row = document.createElement('tr');
+  dataRowParent.appendChild(row);
+
+  const tdLocation = document.createElement('td');
+  row.appendChild(tdLocation);
+  tdLocation.textContent = this.location;
+
+  const tdMinCustomers = document.createElement('td');
+  row.appendChild(tdMinCustomers);
+  tdMinCustomers.textContent = this.minCustomers;
+
+  const tdInterests = document.createElement('td');
+  row.appendChild(tdInterests);
+  tdInterests.textContent = this.interests.join();
+
+  const tdKids = document.createElement('td');
+  row.appendChild(tdKids);
+  tdKids.textContent = this.isGoodWithKids;
+
+  const tdDogs = document.createElement('td');
+  row.appendChild(tdDogs);
+  tdDogs.textContent = this.isGoodWithDogs;
+
+  const tdCats = document.createElement('td');
+  row.appendChild(tdCats);
+  tdCats.textContent = this.isGoodWithOtherCats;
+}
 
 
 
