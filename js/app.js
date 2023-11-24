@@ -119,14 +119,16 @@ render(paris);
 render(lima);
 render(newStore);
 
-///////////////////////////////////
+
 ///////////////////////////////////
 // render an instance of the Store using the form and event listener
 //////////////////////////////////
 
+
 // defined later
 let dataRowParent = null;
 let table = null;
+
 
 Store.prototype.render = function() {
   const row = document.createElement('tr');
@@ -154,7 +156,8 @@ Store.prototype.render = function() {
 // Form starts here
 const storeForm = document.getElementById('addStoreForm');
 
-// event listeners need to know: what event do they care about, and what do they want to do when it happens.
+// event listeners:
+// event to listen to and the actions to take when the event occurs.
 storeForm.addEventListener('submit',
   function (event) {
     event.preventDefault();
@@ -172,13 +175,7 @@ storeForm.addEventListener('submit',
   }
 );
 
-///////////////////////////
 // Helper Functions
-///////////////////////////
-
-/*function randomInRange (min, max) {
-  return Math.floor(Math.random() * (max - min + 1) + min);
-} */
 
 function renderTable() {
   const parentElement = document.getElementById('storeProfiles');
@@ -240,24 +237,9 @@ function renderTableFooter() {
   storeCountCell.setAttribute('colspan',4);
   storeCountCell.classList = ['text-left'];
 
-  /*let ageSum = 0;
-  for(let i=0; i<kittens.length; i++) {
-    const currentKitten = kittens[i];
-    ageSum += currentKitten.age;
-  }
-
-
-  const averageAge = ageSum / kittens.length || 0;
-  const averageAgeCell = document.createElement('th');
-  row.appendChild(averageAgeCell);
-  averageAgeCell.textContent = 'Average age: ' + averageAge;
-  averageAgeCell.setAttribute('colspan', 3);
-  averageAgeCell.classList = ['text-left'];   */
 }
 
-///////////////////////////
-// start app
-///////////////////////////
+// start 
 
 renderTable();
 
